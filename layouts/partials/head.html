@@ -1,0 +1,16 @@
+<head>
+    <head>
+        <meta name="robots" content="noindex, nofollow">
+    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <title>{{ .Title }}</title>
+    
+        {{ "<!-- mobile responsive meta -->" | safeHTML }}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
+        <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}">
+        {{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+        {{ hugo.Generator }}
+    
+</head>
