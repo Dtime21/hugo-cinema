@@ -1,4 +1,7 @@
+# Tutorial
 https://decapcms.org/docs/hugo/
+https://www.youtube.com/watch?v=ZyIiY2m7OpY (utilizza netlify cms, vecchio decap)
+https://arshsharma.com/posts/2023-11-15-building-a-blog-with-a-cms-using-hugo-and-netlify/
 
 1. creare struttura base hugo
     * layout
