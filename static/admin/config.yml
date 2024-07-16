@@ -20,7 +20,7 @@ collections: # A list of collections the CMS should be able to edit
     label: 'Film'
     folder: 'content/film'
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: '{{slug}}'
     editor:
       preview: true
     fields:
@@ -28,4 +28,4 @@ collections: # A list of collections the CMS should be able to edit
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - {label: 'Image', name: 'image', widget: 'image'}
+      - { label: 'Image', name: 'image', widget: 'image'  }
