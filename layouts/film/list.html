@@ -1,8 +1,21 @@
 {{ define "main" }}
 
-film/list
+film/list.html
 
-<h1>{{.Title}}</h1>
-<img src="{{.Params.image}}" alt="">
+<h1>{{ .Title}}</h1>
+<p>{{ .Description }}</p>
+<p>{{ .Content}}</p>
+
+
+Range film pages
+<h3>By FilmDate</h3>
+{{ range .RegularPages.ByParam "filmdate" }}
+
+    <a href="{{ .RelPermalink }}"> <h1>{{.Title}}</h1></a>
+    <p>{{ .Params.filmdate }}</p>
+    <h4>{{ .Date}}</h4>
+{{/*      <img src="{{.Params.image}}" alt="poster {{.Title}}">
+  */}}
+{{end}} 
 
 {{end}}

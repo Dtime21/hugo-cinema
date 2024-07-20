@@ -1,11 +1,11 @@
 ---
-title: Film 01
+title: King Kong
 date: 2024-07-16T08:40:00.000Z
 description: il primo film inserito
-image: /img/2024/giugno/kingkong.jpg
+image: /img/kingkong.jpg
 draft: false
-film-date: 20.07.2024
-film-time:
+filmdate: 31.12.2024
+filmtime:
   - 9:00
 ---
 aadadadas

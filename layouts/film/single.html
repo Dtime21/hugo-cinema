@@ -3,6 +3,20 @@
 film/single
 
 <h1>{{.Title}}</h1>
+<p>{{ .Description}}</p>
+
+<h2>Giorno</h2>
+{{ .Params.filmdate }}
+
+<h2>Ora</h2>
+<ul>
+    {{range .Params.filmtime }}
+    <li>{{ . }}</li>
+    {{end}}
+</ul>
+
+
 <img src="{{.Params.image}}" alt="">
+
 
 {{end}}
