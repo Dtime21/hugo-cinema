@@ -6,7 +6,9 @@ film/single
 <p>{{ .Description}}</p>
 
 <h2>Giorno</h2>
-{{ .Params.filmdate }}
+{{ $month_names := slice "Gennaio" "Febbraio" "Marzo" "Aprile" "Maggio" "Giugno" "Luglio" "Agosto" "Settembre" "Ottobre" "Novembre" "Dicembre" }}
+{{ $month := sub .Date.Month 1 }}
+{{ .Date.Day }} {{ index $month_names $month }} {{ .Date.Year }}
 
 <h2>Ora</h2>
 <ul>
@@ -14,6 +16,9 @@ film/single
     <li>{{ . }}</li>
     {{end}}
 </ul>
+
+
+
 
 
 <img src="{{.Params.image}}" alt="">

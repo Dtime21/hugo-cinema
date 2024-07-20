@@ -4,6 +4,9 @@ index.html
 
 <h1>Decap CMS Hugo!</h1>
 
+<p>18n {{ i18n "january" }}</p>
+
+<a href="{{ .RelPermalink }}"> <h1>{{.Title}}</h1></a>
 
 Range Where section film
 {{ range (where .Site.RegularPages "Section" "film") }}

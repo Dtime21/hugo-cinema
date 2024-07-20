@@ -1,6 +1,16 @@
 baseURL = 'https://hugo-cinema.netlify.app/'
-languageCode = 'en-us'
 title = 'My New Hugo Site'
+
+defaultContentLanguage ="it"
+
+[languages]
+  [languages.it]
+    disabled = false
+    languageCode = 'it'
+    languageDirection = ''
+    languageName = 'Italian'
+    title = 'Sito Italiano'
+    weight = 0
 
 [params]
 author = 'Daniele V'

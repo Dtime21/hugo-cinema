@@ -25,8 +25,8 @@ collections: # A list of collections the CMS should be able to edit
       preview: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Giorno', name: 'date', widget: 'datetime', default: "", date_format: "YYYY.MM.DD", picker_utc: true  }
-      - { label: "Ora", name: "filmtime", widget: "select", multiple: true, min: 1, max: 3, options: ["9:00", "10:30", "23:30"], default: ["9:00"]}
+      - { label: 'Giorno', name: 'date', widget: 'datetime', default: "", date_format: "YYYY-MM-DD", picker_utc: true  }
+      - { label: "Ora", name: "time", widget: "select", multiple: true, min: 1, max: 3, options: ["9:00", "10:30", "23:30"], default: ["9:00"]}
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - { label: 'Image', name: 'image', widget: 'image'  }
