@@ -8,14 +8,15 @@ film/list.html
 
 
 Range film pages
-<h3>By FilmDate</h3>
-{{ range .RegularPages.ByParam "filmdate" }}
+{{/*  <h3>By FilmDate</h3>
+{{ range .RegularPages.ByParam "filmdate" }}  */}}
+
+<h3>By Date</h3>
+{{ range .RegularPages.ByDate }}
 
     <a href="{{ .RelPermalink }}"> <h1>{{.Title}}</h1></a>
-    <p>{{ .Params.filmdate }}</p>
     <h4>{{ .Date}}</h4>
-{{/*      <img src="{{.Params.image}}" alt="poster {{.Title}}">
-  */}}
+
 {{end}} 
 
 {{end}}
