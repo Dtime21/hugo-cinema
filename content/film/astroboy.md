@@ -1,9 +1,9 @@
 ---
 title: Astroboy
-date: 2024-07-30
-time:
-  - 9:00
-  - 10:30
+date: 2024-07-22
+filmtime:
+  - 21:00
+  - 22:30
 description: Astroboy
 image: https://i5.walmartimages.com/seo/Astro-Boy-movie-POSTER-Style-C-11-x-17-2009_c3cbb1bb-900e-4bec-a81e-4333719ae4fa.daa4f25d0b191e20cb9b58145f454661.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF
 ---

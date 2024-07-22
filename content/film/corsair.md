@@ -4,8 +4,8 @@ date: 2024-03-20T09:30:00.000Z
 description: Poster for the 1931 film Corsair.
 image: /img/corsair-poster-7ae063.jpg
 filmtime:
-  - 9:00
-  - 10:30
+  - 21:00
+  - 22:30
 
 filmdate: 2024 January 02
 

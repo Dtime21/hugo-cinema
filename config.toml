@@ -1,17 +1,34 @@
 baseURL = 'https://hugo-cinema.netlify.app/'
-title = 'My New Hugo Site'
+title = 'Cinema AN'
+
+buildFuture = true
 
 LanguageCode = "it"
 DefaultContentLanguage = "it"
-[languages]
-  [languages.en]
-    title = "My New Hugo i18n Site"
-    languageName = "English"
-    weight = 2
-  [languages.it]
-    title = "Η Nuovo Sito"
-    languageName = "Italian"
-    weight = 1
+
+summaryLenght = 30
 
 [params]
 author = 'Daniele V'
+
+[menus]
+  [[menus.main]]
+    name = "Home"
+    pageRef = "/"
+    weight = 10
+  [[menus.main]]
+    name = "Programmazione"
+    pageRef = "/film"
+    URL= "progetti"
+    weight = 20
+  [[menus.main]]
+    name = "Contatti"
+    pageRef = "/contatti"
+    weight = 30
+
+
+[sitemap]
+  changeFreq = 'always'
+  disable = false
+  filename = 'sitemap.xml'
+  priority = -1

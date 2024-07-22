@@ -1,27 +1,39 @@
 {{ define "main" }}
 
-film/single
-
-<h1>{{.Title}}</h1>
-<p>{{ .Description}}</p>
-
-<h2>Giorno</h2>
-{{ $month_names := slice "Gennaio" "Febbraio" "Marzo" "Aprile" "Maggio" "Giugno" "Luglio" "Agosto" "Settembre" "Ottobre" "Novembre" "Dicembre" }}
-{{ $month := sub .Date.Month 1 }}
-{{ .Date.Day }} {{ index $month_names $month }} {{ .Date.Year }}
-
-<h2>Ora</h2>
-<ul>
-    {{range .Params.filmtime }}
-    <li>{{ . }}</li>
-    {{end}}
-</ul>
 
 
+{{ partial "breadcrumbs.html" . }}
 
+<section>
+    <div class="padding-global">
+        <div class="container">
+            <div class="grid col-2">
+                <div class="flex flex-col">
+                    <h1>{{.Title}}</h1>
+                    <p>{{ .Description}}</p>
+                    <p>{{ .Content }}</p>
+                    <div class="flex flex-col">
+                        <h2 class="subtitle">Programmato il</h2>
+                        {{ $month_names := slice "Gennaio" "Febbraio" "Marzo" "Aprile" "Maggio" "Giugno" "Luglio" "Agosto" "Settembre" "Ottobre" "Novembre" "Dicembre" }}
+                        {{ $month := sub .Date.Month 1 }}
+                        {{ .Date.Day }} {{ index $month_names $month }} {{ .Date.Year }}
+                        
+                        <h2 class="subtitle">Alle ore</h2>
+                        <ul>
+                            {{range .Params.filmtime }}
+                            <li>{{ . }}</li>
+                            {{end}}
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <img src="{{.Params.image}}" alt="">
+                    
+                </div>
 
-
-<img src="{{.Params.image}}" alt="">
-
+            </div>
+        </div>
+    </div>
+</section>
 
 {{end}}

@@ -2,7 +2,7 @@
 <html lang="{{ with site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
     {{- partial "head.html" . -}}
     <body>
-
+        {{- partial "header.html" . -}}
         <main>
             {{- block "main" . }}{{- end }}
         </main>

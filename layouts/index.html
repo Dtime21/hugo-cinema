@@ -1,26 +1,86 @@
 {{ define "main" }}
 
-index.html
+<section>
+    <div class="padding-global">
+        <div class="container">
+            <h1 class="title">{{.Description}}</h1>
+            <div class="grid col-2">
+                {{ $now := now }}
+                {{ range last 1 (where .Site.RegularPages "Section" "film").Reverse }}
+                    {{ if ge .Date $now }}
+                        {{/*  col 1  */}}
+                        <div>
+                            <a href="{{ .RelPermalink }}">
+                                <img src="{{ .Params.image }}" alt="Poster {{ .Title}}">
+                            </a>
+                        </div>
+                        {{/*  col 2  */}}
+                        <div class="flex flex-col" >
+                            <p>{{ time.Format "Monday 2 January" .Date }}</p>
+                            <h2 class="title">{{.Title}}</h2>
+                            <p>Orari</h3>
+                            <ul>
+                                {{range .Params.filmtime }}
+                                <li class="subtitle"> {{ . }}</li>
+                                {{end}}
+                            </ul>
+                            <p>{{ .Summary }}</p>
+{{/*                        <a href="{{ .Permalink }}" class="read-more">Leggi di più</a>
+  */}}                      </div>
+                    {{end}}
+                {{end}}
+            </div>
+        </div>
+    </div>
+</section>
 
-<h1>Decap CMS Hugo!</h1>
+<section>
+    <div class="padding-global">
+        <div class="container">
+            <h2 class="title">Programmazione</h2>
+            <div class="grid col-4">
+                {{ range (where .Site.RegularPages.ByDate "Section" "film").Reverse }}
+                    {{ $now := now }}
+                    {{ if ge .Date $now }}
+                    <a href="{{ .RelPermalink }}"> 
+                        <figure class="flex flex-col" >
+                            <img src="{{ .Params.image }}" alt="Poster {{ .Title}}">
+                            <h3 class="normal-text">{{.Title}}</h3>
+                            <p>{{ time.Format "Monday 2 January" .Date }}</p>
+                            <ul class="flex">
+                                {{range .Params.filmtime }}
+                                <li>{{ . }}</li>
+                                {{end}}
+                            </ul>
+                        </figure>
+                    </a>
+                    {{ else }}
+                    <a href="{{ .RelPermalink }}"> 
+                        <figure class="flex flex-col" style="opacity: .3;" >
+                            <img src="{{ .Params.image }}" alt="Poster {{ .Title}}">
+                            <h3 class="normal-text">{{.Title}}</h3>
+                            <p>{{ time.Format "Monday 2 January" .Date }}</p>
+                            <ul>
+                                {{range .Params.filmtime }}
+                                <li>{{ . }}</li>
+                                {{end}}
+                            </ul>
+                        </figure>
+                    </a>
+                    {{end}}
+                {{end}}
+            </div>
+        </div>
+    </div>
+</section>
 
-<p>18n {{ i18n "january" }}</p>
 
-<a href="{{ .RelPermalink }}"> <h1>{{.Title}}</h1></a>
+<section>
+    <div class="padding-global">
+        <div class="container">
 
-Range Where section film
-{{ range (where .Site.RegularPages "Section" "film") }}
-
-    <a href="{{ .RelPermalink }}"> <h1>{{.Title}}</h1></a>
-
-{{end}} 
-
-<br>
-Range Regular Pages
-{{ range .Pages }}
-
-    <a href="{{ .RelPermalink }}"> <h1>{{.Title}}</h1></a>
-
-{{end}}
+        </div>
+    </div>
+</section>
 
 {{end }}

@@ -1,22 +1,52 @@
 {{ define "main" }}
 
-film/list.html
+{{ partial "breadcrumbs.html" . }}
 
-<h1>{{ .Title}}</h1>
-<p>{{ .Description }}</p>
-<p>{{ .Content}}</p>
+<section>
+        <div class="padding-global">
+                <div class="container">
+                <h1 class="title">{{.Title}}</h1>
+                <div class="grid col-4">
+                        {{ range (where .Site.RegularPages.ByDate "Section" "film") }}
+                        <a href="{{ .RelPermalink }}"> 
+                                <figure class="flex flex-col" >
+                                <img src="{{ .Params.image }}" alt="Poster {{ .Title}}">
+                                <h3 class="subtitle">{{.Title}}</h3>
+                                <p>{{ time.Format "Monday 2 January" .Date }}</p>
+                                <ul class="flex">
+                                        {{range .Params.filmtime }}
+                                        <li>{{ . }}</li>
+                                        {{end}}
+                                </ul>
+                                </figure>
+                        {{end}}
+                </div>
+                </div>
+        </div>
+    </section>
 
 
-Range film pages
 
 
-<h3>By Date</h3>
-{{ range .RegularPages.ByDate }}
+    <section>
+        <div class="padding-global">
+            <div class="container">
+                <h2 class="title">Film 2024</h2>
+                {{ $year := 2024 }}  <!-- Sostituisci con l'anno desiderato -->
+{{/*                  {{ $month := 7 }}    <!-- Sostituisci con il mese desiderato (1-12) -->
+  */}}                <ul>
+                {{/*    {{ range where ( where .Site.RegularPages "Date.Year" $year) "Date.Month" $month }}
+                  */}}  
+                  {{ range  where .Site.RegularPages "Date.Year" $year }}
+                    <li>
+                      <a href="{{ .Permalink }}">{{ .Title }}</a> - {{ .Date.Format "Jan 2, 2006" }}
+                    </li>
+                  {{ end }}
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        <a href="{{ .RelPermalink }}"> <h1>{{.Title}}</h1></a>
-        <p>{{ time.Format "Mon 2 January" .Date }}</p>
-        <p></p>{{ .Content }}</p>
 
-{{end}} 
 
 {{end}}

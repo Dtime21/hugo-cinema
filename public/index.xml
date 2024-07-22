@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Cinema AN</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in Home on Cinema AN</description>
+    <generator>Hugo</generator>
+    <language>it</language>
+    <lastBuildDate>Mon, 29 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Il signore degli anelli: la compagnia dell&#39;anello</title>
+      <link>http://localhost:1313/film/king/</link>
+      <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/film/king/</guid>
+      <description>&lt;p&gt;Astroboy è un manga e un anime giapponese creato da Osamu Tezuka. La trama segue le avventure di Astroboy, un robot dalle sembianze umane creato dal dottor Tenma per sostituire il figlio defunto.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Astroboy</title>
+      <link>http://localhost:1313/film/astroboy/</link>
+      <pubDate>Mon, 22 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/film/astroboy/</guid>
+      <description>Astroboy è un manga e un anime giapponese creato da Osamu Tezuka. La trama segue le avventure di Astroboy, un robot dalle sembianze umane creato dal dottor Tenma per sostituire il figlio defunto. Astroboy si impegna a difendere la pace tra umani e robot, affrontando minacce provenienti da entrambi i fronti. Le storie spaziano dalla lotta contro criminali meccanici all&amp;rsquo;esplorazione delle complesse relazioni tra esseri umani e robot. Astroboy esplora temi come l&amp;rsquo;identità, la moralità e la convivenza pacifica tra diverse forme di vita.</description>
+    </item>
+    <item>
+      <title>Placeholder</title>
+      <link>http://localhost:1313/film/placeholder/</link>
+      <pubDate>Tue, 16 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/film/placeholder/</guid>
+      <description>assadddsadadadasdasd sdasdasdadsa</description>
+    </item>
+    <item>
+      <title>Corsair</title>
+      <link>http://localhost:1313/film/corsair/</link>
+      <pubDate>Wed, 20 Mar 2024 09:30:00 +0000</pubDate>
+      <guid>http://localhost:1313/film/corsair/</guid>
+      <description>Pubsasdlic domain photograph of an actor, movie film scene, free to use, no copyright restrictions image - Picryl description</description>
+    </item>
+  </channel>
+</rss>

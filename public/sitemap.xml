@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/film/king/</loc>
+    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/film/astroboy/</loc>
+    <lastmod>2024-07-22T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/film/placeholder/</loc>
+    <lastmod>2024-07-16T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/film/corsair/</loc>
+    <lastmod>2024-03-20T09:30:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/film/</loc>
+    <lastmod>2024-01-20T09:30:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <changefreq>always</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <changefreq>always</changefreq>
+  </url>
+</urlset>

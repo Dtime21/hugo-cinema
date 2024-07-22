@@ -23,4 +23,9 @@
   {{/*  Autenticazione Netlify per CMS  */}}
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
+  {{/*  Importazione CSS  */}}
+  {{ "<!-- Main Stylesheet -->" | safeHTML }}
+  {{ $styles := resources.Get "css/style.css" | minify }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+  
 </head>
