@@ -10,25 +10,11 @@ film/list.html
 Range film pages
 
 
-
-
 <h3>By Date</h3>
 {{ range .RegularPages.ByDate }}
 
         <a href="{{ .RelPermalink }}"> <h1>{{.Title}}</h1></a>
-        <p>Pubblicato il: {{ .Date.Format "Monday 2 January 2006" }}</p>
-
-        <p>Pubblicato il: 
-        {{ i18n (lower (dateFormat "Monday" .Date)) }} 
-        {{ .Date.Format "2" }} 
-        {{ i18n (lower (dateFormat "January" .Date)) }} 
-        {{ .Date.Format "2006" }}
-        </p>
-
-        <p>{{ i18n "january" }}</p>
-
-
-
+        <p>{{ time.Format "Mon 2 January" .Date }}</p>
         <p></p>{{ .Content }}</p>
 
 {{end}} 
