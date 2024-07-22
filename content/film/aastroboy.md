@@ -1,5 +1,5 @@
 ---
-title: Aastroboy
+title: Astroboy
 date: 2024-07-30
 time:
   - 9:00
