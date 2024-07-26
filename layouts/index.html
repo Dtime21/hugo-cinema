@@ -55,8 +55,9 @@
                         </figure>
                     </a>
                     {{ else }}
+                    {{/*  Post con data precedente ad oggi  */}}
                     <a href="{{ .RelPermalink }}"> 
-                        <figure class="flex flex-col" style="opacity: .3;" >
+                        <figure class="flex flex-col" >
                             <img src="{{ .Params.image }}" alt="Poster {{ .Title}}">
                             <h3 class="normal-text">{{.Title}}</h3>
                             <p>{{ time.Format "Monday 2 January" .Date }}</p>
