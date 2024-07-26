@@ -40,8 +40,8 @@
 
 @media (max-width: 40rem) {
   :root{
-    --page-padding: 1.5rem;
-  }
+/*     --page-padding: 2rem;
+ */  }
 }
 
 /* 1. Use a more-intuitive box-sizing model. */
@@ -105,7 +105,7 @@ h2,
 h3,
 h4 {
     font-size: var(--size-200);
-    line-height: var(--fl-11);
+    line-height: var(--fl-11);    
 }
 
 .title{
@@ -114,8 +114,12 @@ h4 {
 }
 
 .subtitle{
-  font-size: var(--size-150);
+  font-size: var(--size-200);
   line-height: var(--fl-11);
+  font-weight: 600;
+  
+  text-transform: uppercase;
+  letter-spacing: -1px;
 }
 
 .text-normal{
@@ -124,7 +128,8 @@ h4 {
 }
 
 .text-medium{
-  font-size: var(--size-125);
+  font-size: var(--size-100);
+  font-weight: 700;
 }
 
 .capitalize{
@@ -195,11 +200,11 @@ section{
 }
 
 .poster {
-  aspect-ratio: 2.7 / 4;
-  height: auto;
-  object-fit: cover;
   background-color: var(--black);
-  min-height: ;
+  height: auto;
+
+  aspect-ratio: 2.7 / 4;
+  object-fit: cover;
 }
 
 .icon{
@@ -229,7 +234,8 @@ section{
   align-content: stretch;
   height: 100%;
   min-height: var(--size-400);
-}
+/*   border-bottom: 1px solid var(--black);
+ */}
 
 .logo{
   z-index: 999;
@@ -278,8 +284,8 @@ section{
 
     /* mobile nav animation */
     opacity: 0;
-/*     height: 50vh;
- */    transition: all .3s ease-in-out;
+    height: 0vh;
+    transition: all .3s ease-in-out;
     border-bottom: 1px solid var(--black);
     }
 
@@ -297,7 +303,8 @@ section{
 /* Toggle menu icon */
 .check-icon:checked ~ .main-nav{
   /* mobile nav animation on menu click */
-  opacity: 1;  
+  opacity: 1;
+  height: 30vh;
 }
 
 .hamb-line{
@@ -342,7 +349,7 @@ body:has(.check-icon:checked) {
   }
 }
 
-*{
+/* *{
   outline: 1px solid salmon;
-}  
- 
+}    */
+  

@@ -1,15 +1,24 @@
 {{ define "main" }}
 
-<section>
+{{/*  <section class="hero">
     <div class="padding-global">
         <div class="container">
             <div class="flex flex-col">
-                <h1>Cinema AN</h1>
+                <h1>{{.Title}}</h1>
                 <div class="flex">
                     <a href="">Stasera al cinema</a>
                     <a href="">Programmazione</a>
                 </div>
             </div>
+        </div>
+    </div>
+</section>  */}}
+
+<section>
+    <div class="padding-global">
+        <div class="container">
+            <h1 class="title">Questa sera al cinema</h1>
+            <h1 style="font-size: 4rem;text-transform:uppercase; font-weight:600; font-family:'Times New Roman', Times, serif; letter-spacing:1px">Cinema AN</h1>
         </div>
     </div>
 </section>
@@ -20,24 +29,27 @@
             <div class="grid col-2">
                 {{ $now := time.Now }}
                 {{ range (where .Site.RegularPages "Section" "film") }}
-                    {{ if ge .Date $now }}
+{{/*                      {{ if ge .Date $now }}  */}}
+
                         {{/*  col 1  */}}
+                        <div class="flex flex-col">                        
+                        <h2 class="subtitle">{{.Title}}</h2>
+                        {{.Summary}}
+<br>
+                        <h3 class="capitalize text-medium">{{ time.Format "Monday 2 January" .Date }}</h3>
+                        <ul class="flex">
+                            {{range .Params.filmtime }}
+                            <li class="time">{{ . }}</li>
+                            {{end}}
+                        </ul>
+                        </div> 
+
+                        {{/*  col 2  */}}
                         <a href="{{ .RelPermalink }}">
                             <img class="poster" src="{{ .Params.image }}" alt="Poster {{ .Title}}">
-                        </a> 
-                        {{/*  col 2  */}}
-                        <div class="flex flex-col">                        
-{{/*                              <h2 class="title">{{.Title}}</h2> */}}                            
-                            <p class="capitalize text-medium">{{ time.Format "Monday 2 January" .Date }}</p>
-                            <ul class="flex">
-                                {{range .Params.filmtime }}
-                                <li class="time">{{ . }}</li>
-                                {{end}}
-                            </ul>
-                            {{.Summary}}
-                        </div>                         
-                    {{end}}
-                {{end}}
+                        </a>
+{{/*                      {{end}}
+  */}}                {{end}}
             </div>
         </div>
     </div>
@@ -50,14 +62,9 @@
             <div class="grid col-4">
                 {{ range (where .Site.RegularPages.ByDate "Section" "film") }}
                 <a href="{{ .RelPermalink }}">        
-                    <figure class="flex flex-col" >       
+                    <figure class="grid flex-col" >   
+                        <p class="text- capitalize">{{ time.Format "Monday 2 January" .Date }}</p>    
                             <img class="poster"  src="{{ .Params.image }}" alt="Poster {{ .Title}}">
-                            <p class="text-medium capitalize">{{ time.Format "Monday 2" .Date }}</p>
-                            <ul class="flex">
-                                {{range .Params.filmtime }}
-                                <li class="time"> {{ . }}</li>
-                                {{end}}
-                            </ul>
                         </figure>
                     </a>
                 {{end}}

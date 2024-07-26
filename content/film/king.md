@@ -1,5 +1,5 @@
 ---
-title: "Il signore degli anelli: la compagnia dell'anello"
+title: "King Kong"
 date: 2024-07-26
 description: il primo film inserito
 image: /img/kingkong.jpg
