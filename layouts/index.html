@@ -3,32 +3,12 @@
 <section>
     <div class="padding-global">
         <div class="container">
-            <h1 class="title">{{.Description}}</h1>
-            <div class="grid col-2">
-                {{ $now := now }}
-                {{ range last 1 (where .Site.RegularPages "Section" "film").Reverse }}
-                    {{ if ge .Date $now }}
-                        {{/*  col 1  */}}
-                        <div>
-                            <a href="{{ .RelPermalink }}">
-                                <img src="{{ .Params.image }}" alt="Poster {{ .Title}}">
-                            </a>
-                        </div>
-                        {{/*  col 2  */}}
-                        <div class="flex flex-col" >
-                            <p>{{ time.Format "Monday 2 January" .Date }}</p>
-                            <h2 class="title">{{.Title}}</h2>
-                            <p>Orari</h3>
-                            <ul>
-                                {{range .Params.filmtime }}
-                                <li class="subtitle"> {{ . }}</li>
-                                {{end}}
-                            </ul>
-                            <p>{{ .Summary }}</p>
-{{/*                        <a href="{{ .Permalink }}" class="read-more">Leggi di più</a>
-  */}}                      </div>
-                    {{end}}
-                {{end}}
+            <div class="flex flex-col">
+                <h1>Cinema AN</h1>
+                <div class="flex">
+                    <a href="">Stasera al cinema</a>
+                    <a href="">Programmazione</a>
+                </div>
             </div>
         </div>
     </div>
@@ -37,35 +17,85 @@
 <section>
     <div class="padding-global">
         <div class="container">
-            <h2 class="title">Programmazione</h2>
+            <div class="grid col-2">
+                {{ $now := time.Now }}
+                {{ range (where .Site.RegularPages "Section" "film") }}
+                    {{ if ge .Date $now }}
+                        {{/*  col 1  */}}
+                        <a href="{{ .RelPermalink }}">
+                            <img class="poster" src="{{ .Params.image }}" alt="Poster {{ .Title}}">
+                        </a> 
+                        {{/*  col 2  */}}
+                        <div class="flex flex-col">                        
+{{/*                              <h2 class="title">{{.Title}}</h2> */}}                            
+                            <p class="capitalize text-medium">{{ time.Format "Monday 2 January" .Date }}</p>
+                            <ul class="flex">
+                                {{range .Params.filmtime }}
+                                <li class="time">{{ . }}</li>
+                                {{end}}
+                            </ul>
+                            {{.Summary}}
+                        </div>                         
+                    {{end}}
+                {{end}}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="padding-global">
+        <div class="container">
+            <div class="grid col-4">
+                {{ range (where .Site.RegularPages.ByDate "Section" "film") }}
+                <a href="{{ .RelPermalink }}">        
+                    <figure class="flex flex-col" >       
+                            <img class="poster"  src="{{ .Params.image }}" alt="Poster {{ .Title}}">
+                            <p class="text-medium capitalize">{{ time.Format "Monday 2" .Date }}</p>
+                            <ul class="flex">
+                                {{range .Params.filmtime }}
+                                <li class="time"> {{ . }}</li>
+                                {{end}}
+                            </ul>
+                        </figure>
+                    </a>
+                {{end}}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="padding-global">
+        <div class="container">
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="padding-global">
+        <div class="container">
+            <h2 class="title">Giugno 2024</h2>
             <div class="grid col-4">
                 {{ range (where .Site.RegularPages.ByDate "Section" "film").Reverse }}
                     {{ $now := now }}
                     {{ if ge .Date $now }}
                     <a href="{{ .RelPermalink }}"> 
                         <figure class="flex flex-col" >
-                            <img src="{{ .Params.image }}" alt="Poster {{ .Title}}">
-                            <h3 class="normal-text">{{.Title}}</h3>
-                            <p>{{ time.Format "Monday 2 January" .Date }}</p>
-                            <ul class="flex">
-                                {{range .Params.filmtime }}
-                                <li>{{ . }}</li>
-                                {{end}}
-                            </ul>
+                            <p class="capitalize">{{ time.Format "Monday 2" .Date }}</p>
+                            <img class="poster"  src="{{ .Params.image }}" alt="Poster {{ .Title}}">
                         </figure>
                     </a>
                     {{ else }}
                     {{/*  Post con data precedente ad oggi  */}}
                     <a href="{{ .RelPermalink }}"> 
                         <figure class="flex flex-col" >
-                            <img src="{{ .Params.image }}" alt="Poster {{ .Title}}">
-                            <h3 class="normal-text">{{.Title}}</h3>
-                            <p>{{ time.Format "Monday 2 January" .Date }}</p>
-                            <ul>
-                                {{range .Params.filmtime }}
-                                <li>{{ . }}</li>
-                                {{end}}
-                            </ul>
+                            <p class="capitalize">{{ time.Format "Monday 2" .Date }}</p>
+                            <img class="poster" src="{{ .Params.image }}" alt="Poster {{ .Title}}">
+{{/*                              <h3 class="normal-text">{{.Title}}</h3> */}}                            
                         </figure>
                     </a>
                     {{end}}
@@ -76,12 +106,17 @@
 </section>
 
 
-<section>
-    <div class="padding-global">
-        <div class="container">
-
-        </div>
-    </div>
-</section>
+<div class="flex">
+    <img class="icon" src="icons/date.svg" alt="">
+    <p class="text-medium capitalize">{{ time.Format "Monday 2 January" .Date }}</p>
+</div>
+<div class="flex">
+    <img class="icon" src="icons/time.svg" alt="">
+    <ul class="text-medium">
+        {{range .Params.filmtime }}
+        <li> {{ . }}</li>
+        {{end}}
+    </ul>
+</div>
 
 {{end }}
