@@ -14,7 +14,7 @@
     </div>
 </section>  */}}
 
-<section>
+{{/*  <section>
     <div class="padding-global">
         <div class="container">
             <h1 class="title">Questa sera al cinema</h1>
@@ -22,30 +22,33 @@
         </div>
     </div>
 </section>
-
+  */}}
 <section>
     <div class="padding-global">
         <div class="container">
             <div class="grid col-2">
                 {{ $now := time.Now }}
-                {{ range (where .Site.RegularPages "Section" "film") }}
+                {{ range first 1 (where .Site.RegularPages "Section" "film") }}
 {{/*                      {{ if ge .Date $now }}  */}}
 
-                        {{/*  col 1  */}}
-                        <div class="flex flex-col">                        
-                        <h2 class="subtitle">{{.Title}}</h2>
-                        {{.Summary}}
-<br>
-                        <h3 class="capitalize text-medium">{{ time.Format "Monday 2 January" .Date }}</h3>
-                        <ul class="flex">
-                            {{range .Params.filmtime }}
-                            <li class="time">{{ . }}</li>
-                            {{end}}
-                        </ul>
-                        </div> 
-
+                        {{/*  col 1  */}}              
+                        <div class="flex flex-col gap-200">
+                            <h1 class="title">Questa sera al cinema</h1>
+                            <div>
+                                <h3 class="capitalize text-normal">{{ time.Format "Monday 2 January" .Date }}</h3>
+                                <ul class="flex-row gap-100">
+                                    {{range .Params.filmtime }}
+                                    <li class="muted">{{ . }}</li>
+                                    {{end}}
+                                </ul>
+                            </div>                      
+                            <div class="flex flex-col gap-02">
+                                <h2 class="subtitle">{{.Title}}</h2>
+                                {{.Summary}}
+                            </div>
+                            </div>
                         {{/*  col 2  */}}
-                        <a href="{{ .RelPermalink }}">
+                        <a href="{{ .RelPermalink }}">                    
                             <img class="poster" src="{{ .Params.image }}" alt="Poster {{ .Title}}">
                         </a>
 {{/*                      {{end}}
@@ -60,11 +63,19 @@
     <div class="padding-global">
         <div class="container">
             <div class="grid col-4">
+                <h1 class="title">Giugno</h1>
                 {{ range (where .Site.RegularPages.ByDate "Section" "film") }}
                 <a href="{{ .RelPermalink }}">        
-                    <figure class="grid flex-col" >   
-                        <p class="text- capitalize">{{ time.Format "Monday 2 January" .Date }}</p>    
-                            <img class="poster"  src="{{ .Params.image }}" alt="Poster {{ .Title}}">
+                    <figure class="grid gap-050" >   
+                        <div>
+                            <h3 class="capitalize text-normal">{{ time.Format "Monday 2 January" .Date }}</h3>
+                            <ul class="flex-row gap-100">
+                                {{range .Params.filmtime }}
+                                <li class="muted">{{ . }}</li>
+                                {{end}}
+                            </ul>
+                        </div> 
+                        <img class="poster"  src="{{ .Params.image }}" alt="Poster {{ .Title}}">
                         </figure>
                     </a>
                 {{end}}

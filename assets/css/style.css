@@ -30,8 +30,8 @@
         --white: #000;
         --black: #fff;
 
-        --fw-normal:300;
-    }
+/*         --fw-normal:300;
+ */    }
 
     .icon{
       filter: invert(1);
@@ -100,26 +100,27 @@ p{
   font-weight: var(--fw-bold);
 }
 
+.muted{
+  opacity: 0.6;
+}
+
 h1,
 h2,
 h3,
 h4 {
     font-size: var(--size-200);
-    line-height: var(--fl-11);    
+    line-height: var(--fl-11);   
 }
 
 .title{
   font-size: var(--size-200);
-  line-height: 1.1;
+  line-height: var(--fl-11);
 }
 
 .subtitle{
-  font-size: var(--size-200);
+  font-size: var(--size-150);
   line-height: var(--fl-11);
-  font-weight: 600;
-  
-  text-transform: uppercase;
-  letter-spacing: -1px;
+  margin-bottom: 0.25rem;
 }
 
 .text-normal{
@@ -127,10 +128,9 @@ h4 {
   line-height: inherit;
 }
 
-.text-medium{
-  font-size: var(--size-100);
-  font-weight: 700;
-}
+/* .text-medium{
+  font-size: var(--size-125);
+} */
 
 .capitalize{
   text-transform: capitalize;
@@ -172,22 +172,27 @@ section{
 .grid{
   display: grid;
   gap: var(--page-padding);
-
+  grid-column: 1fr;
 }
 
 .col-2{
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr;
 }
 
 .col-4{
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-auto-rows: 1fr; /* make all rows the same height */
 }
 
-.flex{
+@media screen and (max-width: 600px) {
+  .col-2{
+    grid-template-columns: 1fr;
+  }
+}
+
+.flex-row{
   display: flex;
   flex-wrap: wrap;
-  gap: var(--size-100);
 }
 
 .flex-between{
@@ -195,16 +200,34 @@ section{
 }
 
 .flex-col{
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  gap: var(--size-050);
 }
+
+.gap-050{
+  gap:var(--size-050);
+  row-gap:var(--size-050);
+}
+
+.gap-100{
+  gap:var(--size-100);
+  row-gap:var(--size-050);
+}
+
+.gap-200{
+  gap:var(--size-200);
+}
+
+
 
 .poster {
   background-color: var(--black);
-  height: auto;
 
   aspect-ratio: 2.7 / 4;
   object-fit: cover;
+  height: auto;
+  width: 100%;
 }
 
 .icon{

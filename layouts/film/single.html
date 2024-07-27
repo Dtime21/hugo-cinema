@@ -14,8 +14,15 @@
                     <p>{{ .Content }}</p>
                 </div>
                 <div>
-                    <img src="{{.Params.image}}" alt="">
-                    
+                    <img loading="lazy" src="{{.Params.image}}" alt="">
+                </div>
+                <div>
+                    {{ $contributors := getJSON "https://api.github.com/repos/gohugoio/hugo/contributors" }}
+                     {{ range $contributors }}
+                       <a href="{{ .url }}">
+                         <img src="{{ .avatar_url }}" alt="{{ .login }}" width="50">
+                       </a>
+                     {{ end }}
                 </div>
 
             </div>
