@@ -28,40 +28,45 @@
   <link rel="stylesheet" href="http://localhost:1313/css/style.min.css" media="screen">
   
 </head>
-<body><header class="header-nav container">
-    
-    <a href="http://localhost:1313/" class="logo" >
+<body><header class="padding-global" style="  position: sticky;
+  top: 0;">
+    <div class="container">
+        <div class="header-nav">
+            
+            <a href="http://localhost:1313/" class="logo" >
+                
+                <p class="text-dark">Cinema AN</p>
+                
+            </a>
         
-        <p class="text-dark">Cinema AN</p>
+            
+            <input  type="checkbox" class="check-icon" id="check-icon"/>
+            <label class="hamb" for="check-icon">
+                <span class="hamb-line"></span>
+            </label>
         
-    </a>
-
-    
-    <input  type="checkbox" class="check-icon" id="check-icon"/>
-    <label class="hamb" for="check-icon">
-        <span class="hamb-line"></span>
-    </label>
-
-    
-    <nav class="main-nav">
-        <ul>
             
-            <li><a href="/">Home</a></li>
-            
-            <li><a href="/film">Programmazione</a></li>
-            
-            <li><a href="/contatti">Contatti</a></li>
-            
-        </ul>
-    </nav>
-</header><main>
+            <nav class="main-nav">
+                <ul>
+                    
+                    <li><a href="/">Home</a></li>
+                    
+                    <li><a href="/film">Programmazione</a></li>
+                    
+                    <li><a href="/contatti">Contatti</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+</div><main>
 
 <section class="padding-section-small">
     <div class="padding-global">
         <div class="container">
             <ul class="flex" id="breadcrumbs">
-                    <li><a href="/">Home</a></li> /
-                <li><a style="font-weight:bold" href="/film/">Film</a></li>
+                <li><a href="/">Home</a></li> /
+                <li><a href="/film/">Film</a></li>
             </ul>
         </div>
     </div>
@@ -89,7 +94,7 @@
                         
                         <a href="/film/placeholder/"> 
                                 <figure class="flex flex-col" >
-                                <img src="/img/placeholder.png" alt="Poster Placeholder">
+                                <img src="/img/placeholder.pn" alt="Poster Placeholder">
                                 <h3 class="subtitle">Placeholder</h3>
                                 <p>martedì 16 luglio</p>
                                 <ul class="flex">
@@ -115,12 +120,32 @@
                         
                         <a href="/film/king/"> 
                                 <figure class="flex flex-col" >
-                                <img src="/img/kingkong.jpg" alt="Poster Il signore degli anelli: la compagnia dell&#39;anello">
-                                <h3 class="subtitle">Il signore degli anelli: la compagnia dell&#39;anello</h3>
-                                <p>lunedì 29 luglio</p>
+                                <img src="/img/kingkong.jpg" alt="Poster King Kong">
+                                <h3 class="subtitle">King Kong</h3>
+                                <p>venerdì 26 luglio</p>
                                 <ul class="flex">
                                         
+                                        <li>21:00</li>
+                                        
                                         <li>22:30</li>
+                                        
+                                        <li>23:45</li>
+                                        
+                                </ul>
+                                </figure>
+                        
+                        <a href="/film/signoredeglianelli/"> 
+                                <figure class="flex flex-col" >
+                                <img src="/img/signoredeglianelli.jpg" alt="Poster Il signore degli anelli: la compagnia dell&#39;anello">
+                                <h3 class="subtitle">Il signore degli anelli: la compagnia dell&#39;anello</h3>
+                                <p>sabato 27 luglio</p>
+                                <ul class="flex">
+                                        
+                                        <li>21:00</li>
+                                        
+                                        <li>22:30</li>
+                                        
+                                        <li>23:45</li>
                                         
                                 </ul>
                                 </figure>
@@ -142,7 +167,11 @@
                   
                   
                     <li>
-                      <a href="http://localhost:1313/film/king/">Il signore degli anelli: la compagnia dell&#39;anello</a> - Jul 29, 2024
+                      <a href="http://localhost:1313/film/signoredeglianelli/">Il signore degli anelli: la compagnia dell&#39;anello</a> - Jul 27, 2024
+                    </li>
+                  
+                    <li>
+                      <a href="http://localhost:1313/film/king/">King Kong</a> - Jul 26, 2024
                     </li>
                   
                     <li>

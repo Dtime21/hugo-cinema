@@ -3,11 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-27T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/film/signoredeglianelli/</loc>
+    <lastmod>2024-07-27T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
   </url><url>
     <loc>http://localhost:1313/film/king/</loc>
-    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-26T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
   </url><url>
     <loc>http://localhost:1313/film/astroboy/</loc>

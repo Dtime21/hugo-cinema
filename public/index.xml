@@ -6,12 +6,19 @@
     <description>Recent content in Home on Cinema AN</description>
     <generator>Hugo</generator>
     <language>it</language>
-    <lastBuildDate>Mon, 29 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Il signore degli anelli: la compagnia dell&#39;anello</title>
+      <link>http://localhost:1313/film/signoredeglianelli/</link>
+      <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/film/signoredeglianelli/</guid>
+      <description>&lt;p&gt;Un giovane hobbit e un variegato gruppo, composto da umani, un nano, un elfo e altri hobbit, partono per un delicata missione, guidati dal potente mago Gandalf. Devono distruggere un anello magico e sconfiggere così il malvagio Sauron.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>King Kong</title>
       <link>http://localhost:1313/film/king/</link>
-      <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/film/king/</guid>
       <description>&lt;p&gt;Astroboy è un manga e un anime giapponese creato da Osamu Tezuka. La trama segue le avventure di Astroboy, un robot dalle sembianze umane creato dal dottor Tenma per sostituire il figlio defunto.&lt;/p&gt;</description>
     </item>

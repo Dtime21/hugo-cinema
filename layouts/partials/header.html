@@ -1,25 +1,30 @@
-<header class="header-nav container">
-    <!-- Logo -->
-    <a href="{{ site.BaseURL}}" class="logo" >
-        {{ if site.Params.logo }}
-        <img src="{{ site.Params.logo | absURL }}" alt="{{site.Title}}">
-        {{ else }}
-        <p class="text-dark">{{site.Title}}</p>
-        {{ end }}
-    </a>
-
-    <!-- Hamburger icon -->
-    <input  type="checkbox" class="check-icon" id="check-icon"/>
-    <label class="hamb" for="check-icon">
-        <span class="hamb-line"></span>
-    </label>
-
-    <!-- Menu -->
-    <nav class="main-nav">
-        <ul>
-            {{range site.Menus.main }}
-            <li><a href="{{ .PageRef }}">{{ .Name }}</a></li>
-            {{end}}
-        </ul>
-    </nav>
-</header>
+<header class="padding-global" style="  position: sticky;
+  top: 0;">
+    <div class="container">
+        <div class="header-nav">
+            <!-- Logo -->
+            <a href="{{ site.BaseURL}}" class="logo" >
+                {{ if site.Params.logo }}
+                <img src="{{ site.Params.logo | absURL }}" alt="{{site.Title}}">
+                {{ else }}
+                <p class="text-dark">{{site.Title}}</p>
+                {{ end }}
+            </a>
+        
+            <!-- Hamburger icon -->
+            <input  type="checkbox" class="check-icon" id="check-icon"/>
+            <label class="hamb" for="check-icon">
+                <span class="hamb-line"></span>
+            </label>
+        
+            <!-- Menu -->
+            <nav class="main-nav">
+                <ul>
+                    {{range site.Menus.main }}
+                    <li><a href="{{ .PageRef }}">{{ .Name }}</a></li>
+                    {{end}}
+                </ul>
+            </nav>
+        </div>
+    </header>
+</div>

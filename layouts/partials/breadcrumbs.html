@@ -3,9 +3,9 @@
         <div class="container">
             <ul class="flex" id="breadcrumbs">
                 {{- range .Ancestors.Reverse }}
-                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li> /
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li> /
                 {{- end }}
-                <li><a style="font-weight:bold" href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
             </ul>
         </div>
     </div>
