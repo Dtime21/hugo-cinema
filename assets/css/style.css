@@ -16,7 +16,7 @@
     --fw-normal:400;
     --fw-bold:600;
     
-    --size-050: 0.75rem;
+    --size-050: 0.5rem;
     --size-100: 1rem;
     --size-125: 1.25rem;
     --size-150: 1.5rem;
@@ -113,12 +113,12 @@ h4 {
 }
 
 .title{
-  font-size: var(--size-200);
+  font-size: var(--size-150);
   line-height: var(--fl-11);
 }
 
 .subtitle{
-  font-size: var(--size-150);
+  font-size: var(--size-125);
   line-height: var(--fl-11);
   margin-bottom: 0.25rem;
 }

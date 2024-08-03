@@ -1,53 +1,28 @@
 {{ define "main" }}
 
-
-<section>
+{{/*  <section class="hero">
     <div class="padding-global">
         <div class="container">
-            <div class="grid col-2">
-            {{ $data := dict }}
-            {{ $csv := "https://docs.google.com/spreadsheets/d/e/2PACX-1vQD3uxiiKqwRl-OcelK3u4OxXER95PT7PLYm_ihOuuD2TmHxiK1V_wHaNBrCvY9lpo1UCnB9C8rn8o9/pub?output=csv" }}
-            {{ with resources.GetRemote $csv }}
-            {{ $opts := dict "delimiter" "," }}
-            {{ $data = . | transform.Unmarshal $opts }}
-            
-                {{ range after 1 $data }}
-                           
-                {{ $image := resources.GetRemote (index . 3) }}
-                {{ $image_webp := $image.Fill "1000x1500 Center webp q70" }}
-                <img class="poster" src="{{ $image_webp.RelPermalink }}" alt="poster {{ index . 0}}">
-
-                    <div class="flex flex-col gap-050">
-                        <h2 class="subtitle">{{index . 0}}</h2>
-                        <div class="flex flex-row gap-050">
-                            <img class="icon" src="icons/date.svg" alt="">
-                            <h3 class="capitalize text-normal">{{index . 1}}</h3>
-                        </div>
-                        <div class="flex flex-row gap-050">
-                            <img class="icon" src="icons/time.svg" alt="">
-                            <ul class="flex-row gap-100">
-                                {{range split (index . 2) ","}}
-                                <li>{{ . }}</li>
-                                {{end}}
-                            </ul>    
-                        </div>
-
-                    </div>
-                
-                {{/*      <img src="{{index . 3}}" alt="poster {{index . 1}}">
-                */}}  
-                {{ end }}
-            
-            {{ else }}
-                {{ errorf "Unable to get resource %q" $csv }}
-            {{ end }}
-
+            <div class="flex flex-col">
+                <h1>{{.Title}}</h1>
+                <div class="flex">
+                    <a href="">Stasera al cinema</a>
+                    <a href="">Programmazione</a>
+                </div>
             </div>
         </div>
     </div>
+</section>  */}}
+
+{{/*  <section>
+    <div class="padding-global">
+        <div class="container">
+            <h1 class="title">Questa sera al cinema</h1>
+            <h1 style="font-size: 4rem;text-transform:uppercase; font-weight:600; font-family:'Times New Roman', Times, serif; letter-spacing:1px">Cinema AN</h1>
+        </div>
+    </div>
 </section>
-
-
+  */}}
 <section>
     <div class="padding-global">
         <div class="container">

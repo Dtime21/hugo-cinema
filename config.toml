@@ -32,3 +32,8 @@ author = 'Daniele V'
   disable = false
   filename = 'sitemap.xml'
   priority = -1
+
+
+  [caches]
+  [caches.getresource]
+    maxAge = "1s"
