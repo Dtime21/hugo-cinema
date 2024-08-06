@@ -1,38 +1,71 @@
 {{ define "main" }}
 
-{{/*  <section class="hero">
-    <div class="padding-global">
-        <div class="container">
-            <div class="flex flex-col">
-                <h1>{{.Title}}</h1>
-                <div class="flex">
-                    <a href="">Stasera al cinema</a>
-                    <a href="">Programmazione</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>  */}}
 
-{{/*  <section>
-    <div class="padding-global">
-        <div class="container">
-            <h1 class="title">Questa sera al cinema</h1>
-            <h1 style="font-size: 4rem;text-transform:uppercase; font-weight:600; font-family:'Times New Roman', Times, serif; letter-spacing:1px">Cinema AN</h1>
-        </div>
-    </div>
-</section>
-  */}}
 <section>
     <div class="padding-global">
         <div class="container">
-            <div class="grid col-2">
-                {{ $now := time.Now }}
-                {{ range first 1 (where .Site.RegularPages "Section" "film") }}
-{{/*                      {{ if ge .Date $now }}  */}}
+            <div class="grid col-2 gap-200">
+            <h1 class="span-all">Questa Sera</h1>
+            {{ $data := dict }}
+            {{/*  Google sheet published on Web as csv  */}}
+            {{ $csv := "https://docs.google.com/spreadsheets/d/e/2PACX-1vQD3uxiiKqwRl-OcelK3u4OxXER95PT7PLYm_ihOuuD2TmHxiK1V_wHaNBrCvY9lpo1UCnB9C8rn8o9/pub?output=csv" }}
+            {{ with resources.GetRemote $csv }}
+            {{ $opts := dict "delimiter" "," }}
+            {{ $data = . | transform.Unmarshal $opts }}
+            
+                {{/*  Skip Header Row on google sheet  */}}
+                {{ range first 1 (after 1 $data) }}
 
+                {{/*  https://pixelswap.fr/entry/how-to-optimize-image-rendering-with-hugo/  */}}
+                {{ $image := resources.GetRemote (index . 3) }}
+                {{ $image_webp := $image.Fill "1000x1500 Center webp q70" }}
+                <img class="poster" src="{{ $image_webp.RelPermalink }}" alt="poster {{ index . 0}}">
+
+                    <div class="flex flex-col gap-100">
+                        <h2>{{index . 0}}</h2>
+                        <div class="flex flex-row gap-050">
+                            <img class="icon" src="icons/date.svg" alt="">
+                            <h3 class="capitalize text-normal">{{index . 1}}</h3>
+                        </div>
+                        <div class="flex flex-row gap-050">
+                            <img class="icon" src="icons/time.svg" alt="">
+                            <ul class="flex-row gap-100">
+                                {{range split (index . 2) ","}}
+                                <li>{{ . }}</li>
+                                {{end}}
+                            </ul>    
+                        </div>
+
+                    </div> 
+                {{ end }}
+            
+            {{ else }}
+                {{ errorf "Unable to get resource %q" $csv }}
+            {{ end }}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="padding-global">
+        <div class="container">
+            <div class="grid col-2 gap-200">
+                {{ $now := time.Now }}
+                
+                {{ range first 1 (where .Site.RegularPages "Section" "film") }}
+                
+                    {{/*  Filter only post with date >= today  */}}
+                    {{/*  {{ if ge .Date $now }}  */}}
+
+                        {{/*  col 2  */}}
+                        <a href="{{ .RelPermalink }}">                    
+                            <img class="poster" src="{{ .Params.image }}" alt="Poster {{ .Title}}">
+                        </a>
+                        
                         {{/*  col 1  */}}              
-                        <div class="flex flex-col gap-200">
+                        <div class="flex flex-col gap-100">
                             <h1 class="title">Questa sera al cinema</h1>
                             <div>
                                 <h3 class="capitalize text-normal">{{ time.Format "Monday 2 January" .Date }}</h3>
@@ -42,17 +75,15 @@
                                     {{end}}
                                 </ul>
                             </div>                      
-                            <div class="flex flex-col gap-02">
+                            <div class="flex flex-col gap-050">
                                 <h2 class="subtitle">{{.Title}}</h2>
                                 {{.Summary}}
                             </div>
-                            </div>
-                        {{/*  col 2  */}}
-                        <a href="{{ .RelPermalink }}">                    
-                            <img class="poster" src="{{ .Params.image }}" alt="Poster {{ .Title}}">
-                        </a>
-{{/*                      {{end}}
-  */}}                {{end}}
+                        </div>
+
+
+                    {{/* {{end}} */}}                
+                {{end}}
             </div>
         </div>
     </div>
@@ -68,7 +99,7 @@
                 <a href="{{ .RelPermalink }}">        
                     <figure class="grid gap-050" >   
                         <div>
-                            <h3 class="capitalize text-normal">{{ time.Format "Monday 2 January" .Date }}</h3>
+                            <h3 class="capitalize text-normal">{{ time.Format "Monday 2" .Date }}</h3>
                             <ul class="flex-row gap-100">
                                 {{range .Params.filmtime }}
                                 <li class="muted">{{ . }}</li>

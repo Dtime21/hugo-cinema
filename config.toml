@@ -10,6 +10,8 @@ summaryLenght = 30
 
 [params]
 author = 'Daniele V'
+csv = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQD3uxiiKqwRl-OcelK3u4OxXER95PT7PLYm_ihOuuD2TmHxiK1V_wHaNBrCvY9lpo1UCnB9C8rn8o9/pub?output=csv"
+timeformat = "02/01/2006"
 
 [menus]
   [[menus.main]]

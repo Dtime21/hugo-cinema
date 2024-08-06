@@ -1,0 +1,35 @@
+{{/*  Work only on index page  */}}
+<section>
+    <div class="padding-global">
+        <div class="container">
+            <div class="grid col-2">
+                {{ $now := time.Now }}
+                {{ range first 1 (where .Site.RegularPages "Section" "film") }}
+                    {{/*  {{ if ge .Date $now }}  */}}
+
+                        {{/*  col 1  */}}              
+                        <div class="flex flex-col gap-200">
+                            <h1 class="title">Questa sera al cinema</h1>
+                            <div>
+                                <h3 class="capitalize text-normal">{{ time.Format "Monday 2 January" .Date }}</h3>
+                                <ul class="flex-row gap-100">
+                                    {{range .Params.filmtime }}
+                                    <li class="muted">{{ . }}</li>
+                                    {{end}}
+                                </ul>
+                            </div>                      
+                            <div class="flex flex-col gap-02">
+                                <h2 class="subtitle">{{.Title}}</h2>
+                                {{.Summary}}
+                            </div>
+                            </div>
+                        {{/*  col 2  */}}
+                        <a href="{{ .RelPermalink }}">                    
+                            <img class="poster" src="{{ .Params.image }}" alt="Poster {{ .Title}}">
+                        </a>
+                    {{/* {{end}} */}}                
+                {{end}}
+            </div>
+        </div>
+    </div>
+</section>

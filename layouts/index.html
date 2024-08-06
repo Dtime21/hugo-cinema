@@ -1,165 +1,85 @@
 {{ define "main" }}
 
 
-<section>
-    <div class="padding-global">
-        <div class="container">
-            <div class="grid col-2">
-            {{ $data := dict }}
-            {{ $csv := "https://docs.google.com/spreadsheets/d/e/2PACX-1vQD3uxiiKqwRl-OcelK3u4OxXER95PT7PLYm_ihOuuD2TmHxiK1V_wHaNBrCvY9lpo1UCnB9C8rn8o9/pub?output=csv" }}
+
+                {{ $data := dict }}
+                {{/*  Google sheet published on Web as csv  */}}
+                {{ $csv := .Site.Params.csv }}
+                {{/*  Formatta la data di oggi come stringa con lo stesso formato estratto dal file csv/google sheet  */}}
+                {{ $formatnow := time.Format .Site.Params.timeformat now }}  
+{{/*                  {{ printf "%t" $formatnow }} <!-- Stampa la struttura di ogni riga per il debug -->      */}}
+
+
             {{ with resources.GetRemote $csv }}
-            {{ $opts := dict "delimiter" "," }}
-            {{ $data = . | transform.Unmarshal $opts }}
-            
-                {{ range after 1 $data }}
-                           
-                {{ $image := resources.GetRemote (index . 3) }}
-                {{ $image_webp := $image.Fill "1000x1500 Center webp q70" }}
-                <img class="poster" src="{{ $image_webp.RelPermalink }}" alt="poster {{ index . 0}}">
 
-                    <div class="flex flex-col gap-050">
-                        <h2 class="subtitle">{{index . 0}}</h2>
-                        <div class="flex flex-row gap-050">
-                            <img class="icon" src="icons/date.svg" alt="">
-                            <h3 class="capitalize text-normal">{{index . 1}}</h3>
-                        </div>
-                        <div class="flex flex-row gap-050">
-                            <img class="icon" src="icons/time.svg" alt="">
-                            <ul class="flex-row gap-100">
-                                {{range split (index . 2) ","}}
-                                <li>{{ . }}</li>
-                                {{end}}
-                            </ul>    
-                        </div>
+                {{/*  separa valori delimitati da virgola e li inserisce in map (con dict)  */}}
+                {{ $opts := dict "delimiter" "," }}  
+                {{/*  trasforma righe in array di stringhe  */}}
+                {{ $data = . | transform.Unmarshal $opts }} 
 
-                    </div>
-                
-                {{/*      <img src="{{index . 3}}" alt="poster {{index . 1}}">
-                */}}  
-                {{ end }}
-            
-            {{ else }}
-                {{ errorf "Unable to get resource %q" $csv }}
-            {{ end }}
+                {{/*  Itera tra le righe  */}}
+                {{range $i, $data }}
+                    {{/*  Separa le righe in singoli valori e le assegna nell array (split)  di stringhe  $giorno  */}}
+                    {{ $giorno := split (index . 1) "," }} 
+                    {{/*  Verifica che ci sia un film con la data di oggi  */}}
+                    {{if eq $formatnow (index $giorno 0)}}
+                        <section>
+                            <div class="padding-global">
+                                <div class="container">
+                                    <div class="grid col-2 gap-200">
 
-            </div>
-        </div>
-    </div>
-</section>
+                                        <h1 class="span-all">Questa Sera</h1>
 
+                                        {{ $image := resources.GetRemote (index . 3) }}
+                                        {{ $image_webp := $image.Fill "1000x1500 Center webp q70" }}
+                                        <img class="poster" src="{{ $image_webp.RelPermalink }}" alt="poster {{ index . 0}}">
 
-<section>
-    <div class="padding-global">
-        <div class="container">
-            <div class="grid col-2">
-                {{ $now := time.Now }}
-                {{ range first 1 (where .Site.RegularPages "Section" "film") }}
-{{/*                      {{ if ge .Date $now }}  */}}
-
-                        {{/*  col 1  */}}              
-                        <div class="flex flex-col gap-200">
-                            <h1 class="title">Questa sera al cinema</h1>
-                            <div>
-                                <h3 class="capitalize text-normal">{{ time.Format "Monday 2 January" .Date }}</h3>
-                                <ul class="flex-row gap-100">
-                                    {{range .Params.filmtime }}
-                                    <li class="muted">{{ . }}</li>
-                                    {{end}}
-                                </ul>
-                            </div>                      
-                            <div class="flex flex-col gap-02">
-                                <h2 class="subtitle">{{.Title}}</h2>
-                                {{.Summary}}
+                                        <div class="flex flex-col gap-100">
+                                            <h2>{{index . 0}}</h2>
+                                            <div class="flex flex-row gap-050">
+                                                <img class="icon" src="icons/date.svg" alt="">
+                                                <h3 class="capitalize text-normal">{{index . 1}}</h3>
+                                            </div>
+                                            <div class="flex flex-row gap-050">
+                                                <img class="icon" src="icons/time.svg" alt="">
+                                                <ul class="flex-row gap-100">
+                                                    {{range split (index . 2) ","}}
+                                                    <li>{{ . }}</li>
+                                                    {{end}}
+                                                </ul>    
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
                             </div>
-                            </div>
-                        {{/*  col 2  */}}
-                        <a href="{{ .RelPermalink }}">                    
-                            <img class="poster" src="{{ .Params.image }}" alt="Poster {{ .Title}}">
-                        </a>
-{{/*                      {{end}}
-  */}}                {{end}}
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section>
-    <div class="padding-global">
-        <div class="container">
-            <div class="grid col-4">
-                <h1 class="title">Giugno</h1>
-                {{ range (where .Site.RegularPages.ByDate "Section" "film") }}
-                <a href="{{ .RelPermalink }}">        
-                    <figure class="grid gap-050" >   
-                        <div>
-                            <h3 class="capitalize text-normal">{{ time.Format "Monday 2 January" .Date }}</h3>
-                            <ul class="flex-row gap-100">
-                                {{range .Params.filmtime }}
-                                <li class="muted">{{ . }}</li>
-                                {{end}}
-                            </ul>
-                        </div> 
-                        <img class="poster"  src="{{ .Params.image }}" alt="Poster {{ .Title}}">
-                        </figure>
-                    </a>
-                {{end}}
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section>
-    <div class="padding-global">
-        <div class="container">
-
-        </div>
-    </div>
-</section>
-
-<section>
-    <div class="padding-global">
-        <div class="container">
-            <h2 class="title">Giugno 2024</h2>
-            <div class="grid col-4">
-                {{ range (where .Site.RegularPages.ByDate "Section" "film").Reverse }}
-                    {{ $now := now }}
-                    {{ if ge .Date $now }}
-                    <a href="{{ .RelPermalink }}"> 
-                        <figure class="flex flex-col" >
-                            <p class="capitalize">{{ time.Format "Monday 2" .Date }}</p>
-                            <img class="poster"  src="{{ .Params.image }}" alt="Poster {{ .Title}}">
-                        </figure>
-                    </a>
-                    {{ else }}
-                    {{/*  Post con data precedente ad oggi  */}}
-                    <a href="{{ .RelPermalink }}"> 
-                        <figure class="flex flex-col" >
-                            <p class="capitalize">{{ time.Format "Monday 2" .Date }}</p>
-                            <img class="poster" src="{{ .Params.image }}" alt="Poster {{ .Title}}">
-{{/*                              <h3 class="normal-text">{{.Title}}</h3> */}}                            
-                        </figure>
-                    </a>
+                        </section>
                     {{end}}
                 {{end}}
-            </div>
-        </div>
-    </div>
-</section>
+                <section>
+                    <div class="padding-global">
+                        <div class="container">
+                            <h2 class="padding-block-small">Prossimamente</h1>
+                            <div class="grid col-4">
+                                {{range after 1 $data }}
+                                {{/*  Separa le righe in singoli valori e le assegna nell array (split)  di stringhe  $giorno  */}}
+                                {{ $giorno := split (index . 1) "," }} 
+                                    
+                                    {{/*  Verifica che ci sia un film DOPO la data di oggi  */}}
+                                    {{if gt $formatnow (index $giorno 0)}}
 
-
-<div class="flex">
-    <img class="icon" src="icons/date.svg" alt="">
-    <p class="text-medium capitalize">{{ time.Format "Monday 2 January" .Date }}</p>
-</div>
-<div class="flex">
-    <img class="icon" src="icons/time.svg" alt="">
-    <ul class="text-medium">
-        {{range .Params.filmtime }}
-        <li> {{ . }}</li>
-        {{end}}
-    </ul>
-</div>
+                                        <figure class="grid gap-050" >   
+                                            {{ $image := resources.GetRemote (index . 3) }}
+                                            {{ $image_webp := $image.Fill "500x750 Center webp q70" }}
+                                            <img class="poster" src="{{ $image_webp.RelPermalink }}" alt="poster {{ index . 0}}">                           
+{{/*                                              <h3 class="text-normal">{{index . 0}}</h3>
+  */}}                                            <h4 class="text-normal">{{index . 1}}<h4>                 
+                                        </figure>
+                                    {{end}}
+                                {{end}}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {{end}}
 
 {{end }}

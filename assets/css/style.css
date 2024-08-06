@@ -5,7 +5,7 @@
 
 
     --container-maxwidth: 60rem;
-    --page-padding: 2rem;
+    --page-padding: 1.5rem;
     
     --fs-body:1rem;
     
@@ -82,7 +82,7 @@ html {
 }
 
 body {
-    font-family: "Inter Variable", sans-serif;
+    font-family: "Archivo", sans-serif;
     
     font-size: var(--fs-body);
     line-height: var(--fl-14);
@@ -108,8 +108,8 @@ h1,
 h2,
 h3,
 h4 {
-    font-size: var(--size-200);
-    line-height: var(--fl-11);   
+    font-size: var(--size-150);
+    line-height: var(--fl-14);   
 }
 
 .title{
@@ -120,7 +120,6 @@ h4 {
 .subtitle{
   font-size: var(--size-125);
   line-height: var(--fl-11);
-  margin-bottom: 0.25rem;
 }
 
 .text-normal{
@@ -154,8 +153,8 @@ section{
   padding-block:var(--size-400) ;
 }
 
-.padding-section-small{
-  padding-block:var(--size-200) ;
+.padding-block-small{
+  padding-block:var(--page-padding) ;
 }
 
 .padding-global{
@@ -177,6 +176,7 @@ section{
 
 .col-2{
   grid-template-columns: 1fr 1fr;
+
 }
 
 .col-4{
@@ -184,9 +184,17 @@ section{
   grid-auto-rows: 1fr; /* make all rows the same height */
 }
 
+.span-all{
+  grid-column: span 2;
+}
+
 @media screen and (max-width: 600px) {
   .col-2{
     grid-template-columns: 1fr;
+  }
+  
+  .span-all{
+    grid-column: unset;
   }
 }
 
@@ -212,11 +220,15 @@ section{
 
 .gap-100{
   gap:var(--size-100);
-  row-gap:var(--size-050);
+  row-gap:var(--size-100);
 }
 
 .gap-200{
   gap:var(--size-200);
+}
+
+.gap-300{
+  gap: var(--size-300);
 }
 
 

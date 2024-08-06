@@ -1,7 +1,7 @@
 <section class="padding-section-small">
     <div class="padding-global">
         <div class="container">
-            <ul class="flex" id="breadcrumbs">
+            <ul class="flex flex-row gap-050" id="breadcrumbs">
                 {{- range .Ancestors.Reverse }}
                 <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li> /
                 {{- end }}
